@@ -23,5 +23,6 @@ Route::get('/admin/galon/filter', [transaksi_galonController::class, 'filter']);
 Route::get('/admin/galon', [transaksi_galonController::class, 'index']);
 Route::post('/admin/galon', [transaksi_galonController::class, 'store']);
 Route::put('/admin/galon/{id}', [transaksi_galonController::class, 'update']);
+Route::delete('/admin/galon/{id}', [transaksi_galonController::class, 'destroy']);
 // Route::put('/admin/galon/update/{id}','transaksi_galonController@update');
 // Route::put('/admin/galon', 'transaksi_galonController@update')->name('galon.update');

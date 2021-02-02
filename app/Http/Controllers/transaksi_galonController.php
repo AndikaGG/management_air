@@ -149,6 +149,9 @@ class transaksi_galonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaksi_galon = Transaksi_galon::find($id);
+        $transaksi_galon->delete();
+
+        return redirect('admin/galon')->with('message','Berhasil Dihapus!');
     }
 }
