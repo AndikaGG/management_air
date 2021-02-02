@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::post('/admin/galon/filter', [transaksi_galonController::class, 'index']);
+Route::get('/admin/galon/filter', [transaksi_galonController::class, 'filter']);
 Route::get('/admin/galon', [transaksi_galonController::class, 'index']);
 Route::post('/admin/galon', [transaksi_galonController::class, 'store']);
 Route::put('/admin/galon/{id}', [transaksi_galonController::class, 'update']);

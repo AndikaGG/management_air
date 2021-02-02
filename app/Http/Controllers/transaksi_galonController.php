@@ -16,16 +16,31 @@ class transaksi_galonController extends Controller
     public function index(Request $request)
     {
 
-        $transaksi_galon = Transaksi_galon::all();
+        $transaksi_galon = Transaksi_galon::paginate(10);;
 
-        //
-          $transaksi_galon = DB::table('transaksi_galon')->whereMonth('created_at',$request -> filter)->get();
+        
 
 
 
         // dd($request);
         return view('admin.galon.index', ['transaksi_galon' => $transaksi_galon]);
 
+
+    }
+
+    public function filter(Request $request)
+    {
+
+        // menangkap data pencarian
+		$filter = $request->filter;
+ 
+        // mengambil data dari table pegawai sesuai pencarian data
+        $transaksi_galon = DB::table('Transaksi_galon')
+        ->where('tgl_transaksi','like',"%".$filter."%")
+        ->paginate(10);
+
+            // mengirim data pegawai ke view index
+        return view('admin.galon.index', ['transaksi_galon' => $transaksi_galon]);
 
     }
 
@@ -48,6 +63,12 @@ class transaksi_galonController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'tgl_transaksi' => 'required',
+            'harga_satuan' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required'
+        ]);
 
         $transaksi_galon = new Transaksi_galon;
 
@@ -60,7 +81,7 @@ class transaksi_galonController extends Controller
 
         $transaksi_galon->save();
 
-        return redirect('admin/galon')->with('message','berhasil tambah Galon!');
+        return redirect('admin/galon')->with('message','Berhasil Tambah Galon!');
     }
 
     /**
@@ -100,6 +121,13 @@ class transaksi_galonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'tgl_transaksi' => 'required',
+            'harga_satuan' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required'
+        ]);
+
         $transaksi_galon = Transaksi_galon::find($id);
 
         $transaksi_galon->tgl_transaksi = $request->tgl_transaksi;
