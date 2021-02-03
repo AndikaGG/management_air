@@ -32,11 +32,9 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html">
-              <h1 style="margin-top: 0.5rem">Rizky<strong>Baru</strong> </h1>
-            </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html">
-            <img src="{{ asset('/assets/images/logo-mini.svg') }}" alt="logo" /> </a>
+          <a class="navbar-brand brand-logo">
+              <h1 style="margin-top: 0.5rem;color:white !important">Rizky<strong>Baru</strong> </h1>
+          </a>
         </div>
         <div class="navbar-menu-wrapper d-flex">
           <div class="col" style="margin-top: 1.2rem">
@@ -44,8 +42,13 @@
           </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-             <a style="color:#1d45ef;" href="#"><i class="fa fa-sign-out fa-2x"></i></a>
+             <a style="color:#1d45ef;" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out fa-2x"></i>
+              </a>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -58,26 +61,15 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="{{ asset('/assets/images/faces/face8.jpg') }}" alt="profile image">
-                  <div class="dot-indicator bg-success"></div>
-                </div>
+              <a class="nav-link">
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
-                  <p class="designation">Karyawan</p>
+                  <p class="profile-name">Halo! {{ Auth::user()->name }}</p>
                 </div>
               </a>
             </li>
-            <li class="nav-item nav-category">Main Menu</li>
+            <li class="nav-item nav-category">Menu</li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/admin/galon">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Transaksi Galon</span>
               </a>
@@ -92,6 +84,12 @@
               <a class="nav-link" href="#">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Transaksi Tanki</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/user">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">User</span>
               </a>
             </li>
           </ul>

@@ -166,17 +166,16 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                          <form action="/admin/galon/{{$galon->id}}" method="post">
-                            <input type="hidden" name="_method" value="delete">
-                            <input class="btn btn-outline-danger mr-2" type="submit" name="submit" value="delete">
-                            <input type="hidden" name="_token" value="{{ csrf_token()}}">
-                          </form>
+                          <a type="button" onclick="event.preventDefault();document.getElementById('delete').submit();"><button type="button" class="btn btn-outline-danger mr-2">Hapus</button></a>
                           <input type="hidden" name="id" value="{{ $galon -> id }}">
                           <input name="id_user" type="hidden" value="2">
                           <input type="hidden" name="_method" value="put">
                           <input type="hidden" name="_token" value="{{ csrf_token()}}">
                           <input style="padding: 0.4rem 2.9rem;" class="btn btn-success mr-2" type="submit" name="submit" value="Simpan">
-                        
+                        </form>
+                        <form id="delete" action="/admin/galon/{{$galon->id}}" method="post">
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="hidden" name="_token" value="{{ csrf_token()}}">
                         </form>
                       </div>
                     </div>
