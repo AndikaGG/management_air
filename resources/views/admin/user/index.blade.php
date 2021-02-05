@@ -83,7 +83,7 @@
                   <td>{{ $ser -> no_tlp }}</td>
                   @if ((Auth::user()->name) === 'admin')
                     <td><!-- Button trigger modal -->
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#user{{ $ser -> id }}" type="submit">More</button>
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#user{{ $ser -> id }}" type="submit">Detail</button>
                     </td>
                   @endif
               </tr>

@@ -27,14 +27,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/galon';
-    
-    // protected function redirectTo()
-    // {
-    //     if (auth()->user()->role_id == 1) {
-    //         return '/admin/galon';
-    //     }
-    //     return '/home';
-    // }
 
 
     /**

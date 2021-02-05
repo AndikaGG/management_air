@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\transaksi_galonController;
+use App\Http\Controllers\transaksi_jerigenController;
+use App\Http\Controllers\transaksi_tankiController;
 use App\Http\Controllers\userController;
 
 /*
@@ -25,6 +27,18 @@ Route::group(['middleware' => ['auth']], function (){
     Route::post('/admin/galon', [transaksi_galonController::class, 'store']);
     Route::put('/admin/galon/{id}', [transaksi_galonController::class, 'update']);
     Route::delete('/admin/galon/{id}', [transaksi_galonController::class, 'destroy']);
+
+    Route::get('/admin/jerigen/filter', [transaksi_jerigenController::class, 'filter']);
+    Route::get('/admin/jerigen', [transaksi_jerigenController::class, 'index']);
+    Route::post('/admin/jerigen', [transaksi_jerigenController::class, 'store']);
+    Route::put('/admin/jerigen/{id}', [transaksi_jerigenController::class, 'update']);
+    Route::delete('/admin/jerigen/{id}', [transaksi_jerigenController::class, 'destroy']);
+
+    Route::get('/admin/tanki', [transaksi_tankiController::class, 'index']);
+    Route::post('/admin/tanki', [transaksi_tankiController::class, 'store']);
+    Route::put('/admin/tanki/{id}', [transaksi_tankiController::class, 'update']);
+    Route::delete('/admin/tanki/{id}', [transaksi_tankiController::class, 'destroy']);
+    Route::get('/admin/tanki/filter', [transaksi_tankiController::class, 'filter']);
 
     Route::get('/admin/user', [userController::class, 'index']);
     Route::post('/admin/user', [userController::class, 'store']);

@@ -1,12 +1,12 @@
 @extends('layout')
-@section('title',"Transaksi Galon")
-@section('topnav',"Transaksi Galon")
+@section('title',"Transaksi tanki")
+@section('topnav',"Transaksi tanki")
 
 @section('main-content')
 
 
 <div class="col-md-3 grid-margin">
-  <button class="btn btn-primary" data-toggle="modal" data-target="#galonCreate" type="submit">Tambah Transaksi</button>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#tankiCreate" type="submit">Tambah Transaksi</button>
 </div>
 
 @if ($errors->any())       
@@ -17,9 +17,7 @@
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
       </div>
       <div class="toast-body">
-         Isi Field yang Masih Kosong! @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-     @endforeach
+         Isi Field yang Masih Kosong!
       </div>
     </div>
   </div>
@@ -46,7 +44,7 @@
       <div class="card-body">
           <div class="col">
             <h6 style="margin-left: -0.8rem;">Filter Berdasarkan Bulan</h6>
-            <form action="/admin/galon/filter" method="GET">
+            <form action="/admin/tanki/filter" method="GET">
                 <div class="row">
                     <div class="form-group">
                       <div class="input-group">
@@ -60,36 +58,34 @@
             </form>
           </div>
           <br />
-        <h3 class="card-title">Tabel Transaksi Galon</h3>
+        <h3 class="card-title">Tabel Transaksi tanki</h3>
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
               <th> No </th>
+              <th> Nama Pengantar </th>
               <th> Tanggal </th>
-              <th> Harga Galon </th>
-              <th> Kuantitas </th>
-              <th> Total </th>
+              <th> Harga tanki </th>
               <th> Diinput Oleh </th>
               <th> Aksi </th>
             </tr>
           </thead>
           <tbody>
-          @foreach ($transaksi_galon as $galon)
+          @foreach ($transaksi_tanki as $tanki)
               <tr>
-                  <td>{{ $galon -> id }}</td>
-                  <td>{{ $galon -> tgl_transaksi }}</td>
-                  <td>Rp.{{ $galon -> harga_satuan }}</td>
-                  <td>{{ $galon -> qty }}</td>
-                  <td>Rp.{{ $galon -> total_harga }}</td>
-                  <td>{{ $galon->user->name }}</td>
+                  <td>{{ $tanki -> id }}</td>
+                  <td>{{ $tanki -> nama_pengantar }}</td>
+                  <td>{{ $tanki -> tgl_transaksi }}</td>
+                  <td>Rp.{{ $tanki -> harga_satuan }}</td>
+                  <td>{{ $tanki ->user->name }}</td>
                   <td><!-- Button trigger modal -->
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#galon{{ $galon -> id }}" type="submit">Detail</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#tanki{{ $tanki -> id }}" type="submit">Detail</button>
                   </td>
               </tr>
 
 
               <!-- Modal Edit -->
-              <div class="modal fade" id="galon{{ $galon -> id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="tanki{{ $tanki -> id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -99,16 +95,24 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                        <form action='/admin/galon/{{ $galon -> id }}' method="post">
+                        <form action='/admin/tanki/{{ $tanki -> id }}' method="post">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Nama Pengantar</label>
+                              <div class="input-group">
+                                <input value="{{ $tanki -> nama_pengantar }}" name="nama_pengantar" type="text" class="form-control" placeholder="Nama Pengantar" aria-describedby="colored-addon1">
+                              </div>
+                            </div>
+                          </div>
                           <div class="form-group">
-                            <label>Harga Galon</label>
+                            <label>Harga tanki</label>
                             <div class="input-group">
                               <div class="input-group-prepend bg-primary">
                                 <span class="input-group-text bg-transparent">
                                   <i class="fa fa-money text-white"></i>
                                 </span>
                               </div>
-                              <input value="{{ $galon -> harga_satuan }}" name="harga_satuan" id="harga_satuanEdit" onkeyup="multiplyEdit();"  type="number" class="form-control" placeholder="Harga" aria-label="Harga" aria-describedby="colored-addon1">
+                              <input value="{{ $tanki -> harga_satuan }}" name="harga_satuan" type="number" class="form-control" placeholder="Harga" aria-label="Harga" aria-describedby="colored-addon1">
                             </div>
                           </div>
                           <div class="form-group">
@@ -119,63 +123,33 @@
                                   <i class="fa fa-calendar text-white"></i>
                                 </span>
                               </div>
-                              <input autocomplete="off" id="" value="{{ $galon -> tgl_transaksi }}" name="tgl_transaksi" type="text" class="form-control" placeholder="Tanggal" aria-label="Tanggal" aria-describedby="colored-addon1">
+                              <input autocomplete="off" value="{{ $tanki -> tgl_transaksi }}" name="tgl_transaksi" type="text" class="form-control" placeholder="Tanggal" aria-label="Tanggal" aria-describedby="colored-addon1">
                             </div>
                           </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Kuantitas</label>
-                                  <div class="input-group">
-                                    <input value="{{ $galon -> qty }}" name="qty" id="kuantitasEdit" onchange="multiplyEdit();" type="number" class="form-control" placeholder="Kuantitas" aria-label="Kuantitas" aria-describedby="colored-addon1">
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                  <label>Total</label>
-                                  <div class="input-group">
-                                    <div class="input-group-prepend bg-primary">
-                                      <span class="input-group-text bg-transparent">
-                                        <i class="fa fa-tags text-white"></i>
-                                      </span>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label>Pencatat</label>
+                                    <div class="input-group">
+                                      <div class="input-group-prepend bg-primary">
+                                        <span class="input-group-text bg-transparent">
+                                          <i class="fa fa-group text-white"></i>
+                                        </span>
+                                      </div>
+                                      <input value="{{ $tanki->user->name }}" id="total" type="text" class="form-control" placeholder="id_user" aria-describedby="colored-addon1" value="0" readonly>
                                     </div>
-                                    <input value="{{ $galon -> total_harga }}" name="total_harga" id="totalEdit" type="text" class="form-control" placeholder="Total Harga" aria-label="total_harga" aria-describedby="colored-addon1" value="0" readonly>
                                   </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Pencatat</label>
-                                  <div class="input-group">
-                                    <div class="input-group-prepend bg-primary">
-                                      <span class="input-group-text bg-transparent">
-                                        <i class="fa fa-group text-white"></i>
-                                      </span>
-                                    </div>
-                                    <input value="{{ $galon->user->name }}" id="total" type="text" class="form-control" placeholder="id_user" aria-label="total_harga" aria-describedby="colored-addon1" value="0" readonly>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1 offset-md-8">
-                                <div class="form-group">
-
-                                </div>
-                            </div>
-                        </div>
+                              </div>
+                          </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                           <a type="button" onclick="event.preventDefault();document.getElementById('delete').submit();"><button type="button" class="btn btn-outline-danger mr-2">Hapus</button></a>
-                          <input type="hidden" name="id" value="{{ $galon -> id }}">
-                          <input name="id_user" type="hidden" value="{{ $galon->id_user }}">
+                          <input name="id_user" type="hidden" value="{{ $tanki -> id_user }}">
                           <input type="hidden" name="_method" value="put">
                           <input type="hidden" name="_token" value="{{ csrf_token()}}">
                           <input style="padding: 0.4rem 2.9rem;" class="btn btn-success mr-2" type="submit" name="submit" value="Simpan">
                         </form>
-                        <form id="delete" action="/admin/galon/{{$galon->id}}" method="post">
+                        <form id="delete" action="/admin/tanki/{{$tanki->id}}" method="post">
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token()}}">
                         </form>
@@ -188,34 +162,47 @@
           </tbody>
         </table>
         <br>
-        {{ $transaksi_galon->links() }}
+        {{ $transaksi_tanki->links() }}
       </div>
     </div>
 
     <!-- Modal Create -->
-      <div class="modal fade" id="galonCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="tankiCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tambah Transaksi Galon</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Tambah Transaksi tanki</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                  <form action='/admin/galon' method="post">
+                  <form action='/admin/tanki' method="post">
                     <div class="row">
                       <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Nama Pengantar</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend bg-primary">
+                              <span class="input-group-text bg-transparent">
+                                <i class="fa fa-user text-white"></i>
+                              </span>
+                            </div>
+                            <input name="nama_pengantar" type="text" class="form-control" placeholder="Nama Pengantar"  aria-describedby="colored-addon1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
                           <div class="form-group">
-                            <label>Harga Per Galon</label>
+                            <label>Harga tanki</label>
                             <div class="input-group">
                               <div class="input-group-prepend bg-primary">
                                 <span class="input-group-text bg-transparent">
                                   <i class="fa fa-money text-white"></i>
                                 </span>
                               </div>
-                              <input name="harga_satuan" id="harga_satuanCreate" onkeyup="multiplyCreate();"  type="number" class="form-control" placeholder="Harga" aria-label="Harga" aria-describedby="colored-addon1">
+                              <input name="harga_satuan" type="number" class="form-control" placeholder="Harga" aria-label="Harga" aria-describedby="colored-addon1">
                             </div>
                           </div>
                       </div>
@@ -232,29 +219,7 @@
                             </div>
                           </div>
                        </div>
-                  
-                      <div class="col-md-6">
-                          <div class="form-group">
-                            <label>Kuantitas</label>
-                            <div class="input-group">
-                              <input value="0" name="qty" id="kuantitasCreate" onchange="multiplyCreate();" type="number" class="form-control" placeholder="Kuantitas" aria-label="Kuantitas" aria-describedby="colored-addon1">
-                            </div>
-                          </div>
-                      </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                            <label>Total</label>
-                            <div class="input-group">
-                              <div class="input-group-prepend bg-primary">
-                                <span class="input-group-text bg-transparent">
-                                  <i class="fa fa-tags text-white"></i>
-                                </span>
-                              </div>
-                              <input name="total_harga" id="totalCreate" type="text" class="form-control" placeholder="Total Harga" aria-label="total_harga" aria-describedby="colored-addon1" value="0" readonly>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
+                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">

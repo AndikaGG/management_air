@@ -9,5 +9,11 @@ class Transaksi_galon extends Model
 {
     use HasFactory;
     protected $table = 'transaksi_galon';
-    protected $fillable = ['id','tgl_transaksi','harga_satuan','qty','total_harga','id_'];
+    protected $fillable = ['id','tgl_transaksi','harga_satuan','qty','total_harga','id_user'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'id_user');
+    }
+
 }

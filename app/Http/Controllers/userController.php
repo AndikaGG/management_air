@@ -77,7 +77,7 @@ class userController extends Controller
 
         $user->save();
 
-        return redirect('admin/user')->with('message','Berhasil Tambah User!');
+        return redirect('admin/user')->with('message','Berhasil Tambah Data!');
     }
 
     /**
@@ -133,7 +133,7 @@ class userController extends Controller
 
         $user->save();
 
-        return redirect('admin/user')->with('message','berhasil di edit!');
+        return redirect('admin/user')->with('message','Berhasil Edit Data');
     }
 
     /**
@@ -147,6 +147,6 @@ class userController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('admin/user')->with('message','Berhasil Dihapus!');
+        return redirect('admin/user')->with('message','Berhasil Hapus Data!');
     }
 }

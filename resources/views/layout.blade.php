@@ -27,7 +27,11 @@
 
  </head>
   <body>
+    @if(Auth::check())
     
+    @else
+      <script>alert('silakan login!')</script>
+    @endif
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -62,8 +66,9 @@
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a class="nav-link">
+                <i class="fa fa-user-circle fa-2x"></i> 
                 <div class="text-wrapper">
-                  <p class="profile-name">Halo! {{ Auth::user()->name }}</p>
+                  <p class="profile-name" style="margin: 1px 25px 1px;">Halo! {{ Auth::user()->name }}</p>
                 </div>
               </a>
             </li>
@@ -75,13 +80,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/admin/jerigen">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Transaksi Jerigen</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/admin/tanki">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Transaksi Tanki</span>
               </a>
@@ -114,9 +119,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript">
-    $('#datepickerEdit').datepicker( {
-            format: "dd-mm-yyyy",
-            setDate: "today"
+    $('.datepickerEdit').datepicker( {
+            format: "dd-mm-yyyy"
         });   
 
   

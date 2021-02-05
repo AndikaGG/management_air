@@ -16,11 +16,7 @@ class transaksi_galonController extends Controller
     public function index(Request $request)
     {
 
-        $transaksi_galon = Transaksi_galon::paginate(10);;
-
-        
-
-
+        $transaksi_galon = Transaksi_galon::paginate(10);
 
         // dd($request);
         return view('admin.galon.index', ['transaksi_galon' => $transaksi_galon]);
@@ -35,8 +31,8 @@ class transaksi_galonController extends Controller
 		$filter = $request->filter;
  
         // mengambil data dari table pegawai sesuai pencarian data
-        $transaksi_galon = DB::table('Transaksi_galon')
-        ->where('tgl_transaksi','like',"%".$filter."%")
+        $transaksi_galon = Transaksi_galon::
+        where('tgl_transaksi','like',"%".$filter."%")
         ->paginate(10);
 
             // mengirim data pegawai ke view index
@@ -81,7 +77,7 @@ class transaksi_galonController extends Controller
 
         $transaksi_galon->save();
 
-        return redirect('admin/galon')->with('message','Berhasil Tambah Galon!');
+        return redirect('admin/galon')->with('message','Berhasil Tambah Data!');
     }
 
     /**
@@ -122,10 +118,8 @@ class transaksi_galonController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'tgl_transaksi' => 'required',
             'harga_satuan' => 'required',
             'qty' => 'required',
-            'total_harga' => 'required'
         ]);
 
         $transaksi_galon = Transaksi_galon::find($id);
@@ -138,7 +132,7 @@ class transaksi_galonController extends Controller
 
         $transaksi_galon->save();
 
-        return redirect('admin/galon')->with('message','berhasil di edit!');
+        return redirect('admin/galon')->with('message','Berhasil Edit Data!');
     }
 
     /**
@@ -152,6 +146,6 @@ class transaksi_galonController extends Controller
         $transaksi_galon = Transaksi_galon::find($id);
         $transaksi_galon->delete();
 
-        return redirect('admin/galon')->with('message','Berhasil Dihapus!');
+        return redirect('admin/galon')->with('message','Berhasil Hapus Data!');
     }
 }

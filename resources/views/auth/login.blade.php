@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
+    <title>Rizky Baru - Login</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
@@ -40,6 +40,9 @@
                     <label class="label">Username</label>
                     <div class="input-group">
                       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                      @error('email')
+                                    <script>alert('Email atau Password Salah!')</script>
+                        @enderror
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
