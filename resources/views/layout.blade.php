@@ -21,9 +21,8 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('/assets/css/demo_1/style.css') }}">
-
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="{{ asset('/assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('/assets/images/logo.jpg') }}" />
 
  </head>
   <body>

@@ -1,6 +1,6 @@
 @extends('layout')
-@section('title',"Transaksi tanki")
-@section('topnav',"Transaksi tanki")
+@section('title',"Transaksi Tanki")
+@section('topnav',"Transaksi Tanki")
 
 @section('main-content')
 
