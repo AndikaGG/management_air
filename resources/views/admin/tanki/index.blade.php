@@ -66,7 +66,7 @@
               <th> Nama Pengantar </th>
               <th> Tanggal </th>
               <th> Harga tanki </th>
-              <th> Diinput Oleh </th>
+              <th> Pencatat </th>
               <th> Aksi </th>
             </tr>
           </thead>

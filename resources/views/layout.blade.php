@@ -45,7 +45,7 @@
           </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-             <a style="color:#1d45ef;" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+             <a style="color:#15d0f6;" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="fa fa-sign-out fa-2x"></i>
               </a>
             </li>

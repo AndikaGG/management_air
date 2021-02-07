@@ -67,7 +67,7 @@
               <th> Harga jerigen </th>
               <th> Kuantitas </th>
               <th> Total </th>
-              <th> Diinput Oleh </th>
+              <th> Pencatat </th>
               <th> Aksi </th>
             </tr>
           </thead>
