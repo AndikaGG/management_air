@@ -7,9 +7,9 @@ return [
     | View Storage Paths
     |--------------------------------------------------------------------------
     |
-    | Most templating systems load templates from disk. Here you may specify
-    | an array of paths that should be checked for your views. Of course
-    | the usual Laravel view path has already been registered for you.
+    | Kebanyakan sistem templating memuat templat dari disk. Di sini Anda dapat menentukan
+    | serangkaian jalur yang harus diperiksa untuk pandangan Anda. Tentu saja
+    | jalur tampilan Laravel yang biasa telah didaftarkan untuk Anda.
     |
     */
 
@@ -22,9 +22,9 @@ return [
     | Compiled View Path
     |--------------------------------------------------------------------------
     |
-    | This option determines where all the compiled Blade templates will be
-    | stored for your application. Typically, this is within the storage
-    | directory. However, as usual, you are free to change this value.
+    | Opsi ini menentukan di mana semua templat Blade yang dikompilasi akan berada
+    | disimpan untuk aplikasi Anda. Biasanya, ini ada di dalam penyimpanan
+    | direktori. Namun, seperti biasa, Anda bebas mengubah nilai ini.
     |
     */
 
