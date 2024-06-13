@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RizkyBaru - @yield('title')</title>
+    <title>Fresh Water - @yield('title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
@@ -36,7 +36,7 @@
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
           <a class="navbar-brand brand-logo">
-              <h1 style="margin-top: 0.5rem;color:white !important">Rizky<strong>Baru</strong> </h1>
+              <h1 style="margin-top: 0.5rem;color:white !important">Fresh<strong>Water</strong> </h1>
           </a>
         </div>
         <div class="navbar-menu-wrapper d-flex">

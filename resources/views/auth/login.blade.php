@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Rizky Baru - Login</title>
+    <title>Fresh Water - Login</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
@@ -27,7 +27,7 @@
             <div class="col-lg-4 mx-auto">
                 <div style="border: 1px solid white;margin: 44px 0px;border-radius: 5px; " class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
                     <a class="navbar-brand brand-logo">
-                        <h1 style="margin-top: 0.5rem;color:white !important">Rizky<strong>Baru</strong> Management</h1>
+                        <h1 style="margin-top: 0.5rem;color:white !important">Fresh<strong>Water</strong> Management</h1>
                     </a>
                   </div>
               <div class="auto-form-wrapper">
