@@ -7,10 +7,10 @@ return [
     | Third Party Services
     |--------------------------------------------------------------------------
     |
-    | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
+    | File ini untuk menyimpan kredensial untuk layanan pihak ketiga tersebut
+    | seperti Mailgun, Cap Pos, AWS, dan lainnya. File ini menyediakan de facto
+    | lokasi untuk jenis informasi ini, memungkinkan paket untuk dimiliki
+    | file konvensional untuk menemukan berbagai kredensial layanan.
     |
     */
 

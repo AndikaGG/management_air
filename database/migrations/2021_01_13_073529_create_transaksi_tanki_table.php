@@ -24,7 +24,7 @@ class CreateTransaksiTankiTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Balikkan migrasi.
      *
      * @return void
      */
